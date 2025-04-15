@@ -28,6 +28,10 @@ Learn Javascript
 12. [Condition variables](#Condition-variables)
 13. [Priority constructor](#Priority-constructor)
 
+```js
+export const JsStory = () => html` JS Story `;
+```
+
 ```js story
 export const JsStory = () => html` JS Story `;
 ```
