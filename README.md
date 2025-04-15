@@ -28,6 +28,29 @@ Learn Javascript
 12. [Condition variables](#Condition-variables)
 13. [Priority constructor](#Priority-constructor)
 
+```js story
+export const JsStory = () => html` JS Story `;
+```
+
+```js preview-story
+export const JsPreviewStory = () => html` JS Preview Story `;
+```
+
+```html story
+
+  Hello world!
+  Click me!
+
+```
+
+```html preview-story
+
+  Hello world!
+  Click me!
+
+```
+
+
 ## Fundamental types
 The actual fundamental types you can see in official documentation: https://en.cppreference.com/w/cpp/language/types
 <br><br>
