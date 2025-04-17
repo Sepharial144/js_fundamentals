@@ -6,7 +6,13 @@ Learn Javascript
 1. [Unicode symbols](#unicode-symbols)
 2. [Comments](#comments)
 3. [Literals](#literals)
-1. [Fundamental types](#fundamental-types)
+4. [Identifiers](#identifiers)
+5. [Reserved words](#reserved-words)
+6. [Fundamental types](#fundamental-types)
+7. [Number](#number)
+8. [Infinite](#infinite)
+9. [Infinite examples](#infinite-examples)
+10. [Infinite pitfalls](#infinite-pitfalls)
 2. [Variables](#Variables)
 3. [Aggregate initialize variables](#aggregate-initialize-variables)
 4. [Safety aggregate initialize variables](#aggregate-initialize-variables)
@@ -56,14 +62,213 @@ comment.
 
 ### Literals
 ```js
-12 // Number
-1.2 // Number
+12            // Number
+1.2           // float number
 "hello world" // String
-'Hi' // String
-true // Boolean true value
-false // Boolean false value
+'Hi'          // String
+true          // Boolean true value
+false         // Boolean false value
 /javascript/gi // Literal "regular expression" (for searching by template)
-null // null Object
+null          // null Object
+{ x:1, y:2 }  // initializer of object
+[1,2,3,4,5]   // initializer of array
+```
+
+### Identifiers
+```js
+
+```
+
+### Reserved words
+```js
+break   delete  function    return  typeof
+case    do  if  switch  var
+catch   else    in  this    void
+continue    false   instanceof   throw   while
+debugger    finally new true    with
+default for null    try
+// ans some addition
+class const enum export extends import super
+
+// reserved words in strict mode
+implements let private public yield
+interface package protected static
+
+// follow words can't use as name variables functions, parameters
+arguments eval
+
+// next word reserved from Java lang
+abstract double goto native static
+boolean enum implements package super
+byte export import private synchronized
+char extends int protected throws
+class final interface public transient
+const float long short volatile
+
+// Global words defined in JavaScript
+arguments encodeURI Infinity Number RegExp
+Array encodeURIComponent isFinite Object String
+Boolean Error isNaN parseFloat SyntaxError
+Date eval JSON parseInt TypeError
+decodeURI EvalError Math RangeError undefined
+decodeURIComponent Function NaN ReferenceError URIError
+```
+
+## Fundamental Types
+```js
+console.log(typeof 42)        // Expected output: "number"
+console.log(typeof 42.42)     // Expected output: "number"
+console.log(typeof "blubber") // Expected output: "string"
+console.log(typeof true)      // Expected output: "boolean"
+console.log(typeof undeclaredVariable) // Expected output: "undefined"
+console.log(typeof null)      // Expected output: "object" also named as null-object
+console.log(typeof undefined) // Expected output: "undefined"
+```
+
+### Number
+```js
+console.log(typeof 42)        // Expected output: "number"
+console.log(typeof NaN)       // Expected output: "number"
+
+// float number
+console.log(typeof 42.42)     // Expected output: "number"
+
+// Infinity
+console.log(type of Infinity) // Expected output: "number"
+console.log(typeof -Infinity) // Expected output: "number"
+```
+
+### Infinite
+```js
+console.log(Number.MAX_VALUE)         // Expected output: 1.7976931348623157e+308
+console.log(Number.MAX_SAFE_INTEGER)  // Expected output: 9007199254740991
+console.log(Infinity)                 // Expected output: Infinity
+
+console.log(1/0)                                 // Expected output: Infinity
+console.log(Infinity > Number.MAX_SAFE_INTEGER)  // Expected output: true
+console.log(Infinity > Number.MAX_VALUE)         // Expected output: true
+console.log(Infinity + 1)                        // Expected output: Infinity
+console.log(Infinity * 10)                       // Expected output: Infinity
+console.log(Infinity + Infinity)                 // Expected output: Infinity
+
+console.log(Infinity / Infinity)                 // Expected output: NaN
+console.log(Infinity % 5)                        // Expected output: NaN
+
+// Create Infynity in js
+console.log(Infinity)                    // Expected output: Infinity
+console.log(Number.POSITIVE_INFINITY)    // Expected output: Infinity
+console.log(Number.NEGATIVE_INFINITY)    // Expected output: Infinity
+
+// Create Infynity by bif calculation
+console.log(Math.pow(2,1024))            // Expected output: Infinity
+console.log(-1*Math.pow(2,1024))         // Expected output: -Infinity
+
+// Infinity division
+console.log(100/Infinity)                // Expected output: 0
+
+// here is " - " is an minus operator of number so we will see -0 in result
+console.log(100/-Infinity)               // Expected output: -0
+
+// divide by NaN give us NaN
+console.log(Infinity+NaN)   // Expected output: NaN
+console.log(Infinity-NaN)   // Expected output: NaN
+console.log(Infinity*NaN)   // Expected output: NaN
+console.log(Infinity/NaN)   // Expected output: NaN
+console.log(100/NaN)        // Expected output: NaN
+
+// comparing Infiniry with -Infinity
+console.log(Infinity > -Infinity)       // Expected output: true
+
+// checking for infinity with ==
+console.log(Infinity == 1/0)            // Expected output: true
+console.log(Infinity == "Infinity")     // Expected output: true
+console.log(Infinity == "1"/"0")        // Expected output: true
+console.log(Infinity == "1/0")          // Expected output: false
+
+// checking for infinity with ===
+console.log(Infinity === 1/0)            // Expected output: true
+console.log(Infinity === "Infinity")     // Expected output: false
+console.log(Infinity === "1"/"0")        // Expected output: true
+console.log(Infinity === "1/0")          // Expected output: false
+
+// checking for infinity with Object.is()
+console.log(Object.is(Infinity, 1/0))        // Expected output: true
+console.log(Object.is(Infinity, "Infinity")) // Expected output: false
+
+// checking isFinite()
+console.log(isFinite("Infinity"))       // Expected output: false
+console.log(isFinite("37"))             // Expected output: true
+
+console.log(Number.isFinite("Infinity"))         // Expected output: false
+console.log(Number.isFinite("37"))               // Expected output: false
+console.log(Number.isFinite(Number("Infinity"))) // Expected output: false
+console.log(Number.isFinite(Number("37")))       // Expected output: true
+```
+
+### Infinite examples
+One use case where Infinity is put to practical use is finding the minimum value in an array
+```js
+function finMinEle(arr){
+    let min = Infinity;
+    for(const item of arr){
+        min = Math.min(min, item);
+    }
+    return min;
+}
+
+findMinEle([10,8,1,220]); // Expected output: 1
+```
+
+Negative Infinity can be used to get the smallest value in a logic block.
+```js
+function checkSmallestNumber(smallNumber) {
+  if (smallNumber === Number.NEGATIVE_INFINITY) {
+    return smallNumber;
+  }
+  return smallNumber;
+}
+
+console.log(checkSmallestNumber(-Number.MAX_VALUE))  // Expected output: -1.7976931348623157e+308
+console.log(checkSmallestNumber(-Infinity))          // Expected output: -Infinity
+```
+
+### Infinite pitfalls
+It happens when we parseInt number from forms
+```js
+console.log(parseInt('23years'))            // Expected output: 23
+console.log(parseInt('less than 23years'))  // Expected output: NaN
+console.log(parseInt('Infinity'))           // Expected output: NaN
+```
+
+But if we use parseFloat
+```js
+console.log(parseFloat('Infinity'))        // Expected output: Infinity
+```
+
+Json serialization: JSON.stringify() method serializes an infinite number to null
+```js
+const item = {
+    availability: Infinity
+}
+let stock = JSON.stringify(item)
+console.log(stock)                // Expected output: {"availability": null}
+```
+
+Math metods
+```js
+console.log(2 * Number.MAX_VALUE) // Expected output: Infinity
+console.log(Math.pow(10,1000))    // Expected output: Infinity
+```
+Math. max() and Math. min() are the two Math methods when invoked without arguments resulting in -Infinity and Infinity respectively.
+```js
+let empty = [];
+console.log(Math.max(...empty))  // Expected output: -Infinity
+console.log(Math.min(...empty))  // Expected output: Infinity
+```
+
+### tempalte
+```js
+
 ```
 
 

@@ -1,16 +1,16 @@
-console.log("console.log(typeof 42);")
+console.log("console.log(typeof 42)")
 console.log(typeof 42) // Expected output: "number"
 
-console.log("console.log(typeof 42.42);") // float number
+console.log("console.log(typeof 42.42)") // float number
 console.log(typeof 42.42) // Expected output: "number"
 
-console.log("console.log(typeof \"blubber\");")
+console.log("console.log(typeof \"blubber\")")
 console.log(typeof "blubber") // Expected output: "string"
 
-console.log("console.log(typeof true);")
+console.log("console.log(typeof true)")
 console.log(typeof true) // Expected output: "boolean"
 
-console.log("console.log(typeof undeclaredVariable);")
+console.log("console.log(typeof undeclaredVariable)")
 console.log(typeof undeclaredVariable)
 // Expected output: "undefined"
 
@@ -22,6 +22,7 @@ console.log("console.log(typeof undefined)")
 console.log(typeof undefined)
 // Expected output: "undefined"
 
+/*
 /*
 if (null == undefined)
 {
@@ -45,3 +46,4 @@ console.log(typeof Function); // TODO: need to extend this think
 
 // need read this
 // https://learn.javascript.ru/native-prototypes
+*/
