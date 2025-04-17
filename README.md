@@ -3,6 +3,8 @@ Learn Javascript
 
 # Glossary
 
+1. [Unicode symbols](#unicode-symbols)
+2. [Comments](#comments)
 1. [Fundamental types](#fundamental-types)
 2. [Variables](#Variables)
 3. [Aggregate initialize variables](#aggregate-initialize-variables)
@@ -27,6 +29,30 @@ Learn Javascript
 11. [Examples](#Examples)
 12. [Condition variables](#Condition-variables)
 13. [Priority constructor](#Priority-constructor)
+
+
+### Unicode symbols
+    This article should contain table of unicode symbols
+
+### Unicode symbols
+```js
+// One line
+comments
+/* There is another
+comment
+*/ // another one
+comment.
+/*
+* Several.
+* line
+comment.
+*/
+```
+
+
+```js
+export const JsStory = () => html` JS Story `;
+```
 
 ```js
 export const JsStory = () => html` JS Story `;
